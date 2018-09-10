@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<link rel="stylesheet" href="css/css.css">
+
+<script src="js/jquery.min.3.2.1.js"></script>
+<!--<script src="js/jquery.js"></script>-->
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		//cargar datos en siguiente pagina
+		$(".enviar").click(function(){
+			//variables reciben valores de celdas
+			var nombre=$(this).parents("tr").find("td").eq(0).html();
+			var edad=$(this).parents("tr").find("td").eq(1).html();
+			
+			//funcion envia valores a recepciondatos.php
+            $.ajax({
+               url: 'recepciondatos.php',
+               type: 'POST',
+               data: "nombre="+nombre+"&edad="+edad,
+               error: function() {
+                  alert('Error');
+               },
+               success: function(data) {
+				    $("#datos").html(data);
+               }
+            });
+			//fin funcion ajax
+    	});
+		//fin editar
+		
+	
+
+   });// fin document.ready
+		 
+
+		
+	</script>
+
+</head>
+<body>
+
+	<table border="1">
+		<tr><th>Nombre</th><th>Edad</th>
+		<th>Enviar</th></tr>
+		<tr><td class="nombretd">Juan Perez</td><td>29</td><td><a href="#" class="enviar"><img src="img/sendicon1.png"></a></td></tr>
+		<tr><td class="nombretd">Juanita Perez</td><td>38</td><td><a href="#" class="enviar"><img src="img/sendicon1.png"></a></td></tr>
+		<tr><td class="nombretd">Maria Gomez</td><td>27</td><td><a href="#" class="enviar"><img src="img/sendicon1.png"></a></td></tr>
+	</table>
+    
+    <!--Aquí cargas los datos desde recepciondatos.php	-->
+    <div id="datos"></div>
+</body>
+</html>

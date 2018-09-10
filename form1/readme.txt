@@ -1,0 +1,1 @@
+** Enviar datos a un archivo php con ajax.
