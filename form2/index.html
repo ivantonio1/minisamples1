@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Formulario a div</title>
+
+<script src="js/jquery.min.3.2.1.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+
+		//cargar datos en siguiente pagina
+		$("#enviar").click(function(){
+			//variables reciben valores de celdas
+			
+			texto="El nombre de la persona es "+$('#nombre').val()+" "+$('#apellido').val()+", tiene "+$('#edad').val()+" y es de sexo "+$('#sexo').val();
+			
+			$("#recibedatos").html(texto);
+    	});
+		//fin enviar
+		
+	
+
+   });// fin document.ready
+</script>
+</head>
+
+<body>
+<div id="formulario">
+  <table width="269" border="1">
+    <caption>
+      Formulario
+    </caption>
+    <tr>
+      <td width="81">Nombre:</td>
+      <td width="153" ><input type="text" name="nombre" id="nombre" /> </td>
+         </tr>
+    <tr>
+      <td>Apellido:</td>
+      <td><input type="text" name="apellido" id="apellido" /></td>
+    </tr>
+    <tr>
+      <td>Edad:</td>
+      <td><input type="text" name="edad" id="edad" /></td>
+    </tr>
+    <tr>
+      <td>Sexo:</td>
+      <td><label for="sexo"></label>
+        <select name="sexo" id="sexo">
+        	<option value="masculino">Masculino</option>
+        	<option value="femenino">Femenino</option>            
+        </select>
+      </form></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div align="center">
+          <input type="button" name="enviar" id="enviar" value="Enviar" />
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<br><br>
+<div id="recibedatos">
+</div>
+
+</body>
+
+</html>
